@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload CSV - Network Graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  
+  <div class="upload-container">
+    <div class="upload-header">
+      <img src="{{ url_for('static', filename='HCC-.png') }}" alt="HCC Logo" class="HCC_LOGO">
+      <h1>Network Graph Visualizer</h1>
+      <p class="subtitle">Transform your LinkedIn connections into an interactive network diagram</p>
+    </div>
+    <div class="upload-card">
+      <!--<div class="upload-icon">📊</div>-->
+      <h2>Upload Your Connections</h2>
+      <p class="instructions">
+        Export your LinkedIn connections as CSV and upload below to generate your professional network visualization.
+        <br><br>
+        <small>File should contain: First Name, Last Name, Email, Company, Position</small>
+      </p>
+      
+      <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <div class="file-input-container">
+          <label for="csv-upload" class="file-label">
+            <span class="file-button">Choose CSV File</span>
+            <span id="file-name" class="file-name">No file selected</span>
+          </label>
+          <input type="file" id="csv-upload" name="file" accept=".csv" required>
+        </div>
+        
+        {% if error %}
+        <div class="error-message">
+          ⚠️ {{ error }}
+        </div>
+        {% endif %}
+        
+        <button type="submit" class="visualize-button">
+          Generate Network Visualization
+        </button>
+      </form>
+    </div>
+    
+
+  <script>
+    // Update filename display when file is selected
+    document.getElementById('csv-upload').addEventListener('change', function(e) {
+      const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
+      document.getElementById('file-name').textContent = fileName;
+    });
+  </script>
+</body>
+</html>

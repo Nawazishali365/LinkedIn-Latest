@@ -1,0 +1,7 @@
+First Name,Last Name,Company,Connection,Email Address,Position
+Afraz,Siddiqui,HCC,John Doe,afraz@example.com,Intern
+John,Doe,Meta,Afraz Siddiqui,john@example.com,Engineer
+Jane,Smith,Google,Afraz Siddiqui,jane@example.com,Manager
+Ali,Khan,Amazon,Afraz Siddiqui,ali@example.com,Developer
+Sara,Raza,Apple,Ali Khan,sara@example.com,Analyst
+Ali,Khan,Amazon,Sara Raza,ali@example.com,Developer

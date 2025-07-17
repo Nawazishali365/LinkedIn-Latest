@@ -1,0 +1,11 @@
+First Name,Last Name,Company,Connection,Email Address,Position
+Afraz,Siddiqui,HCC,John Meta,afraz@hcc.com,Intern
+John,Meta,Meta,Afraz Siddiqui,john@meta.com,Engineer
+Alice,Meta,Meta,Afraz Siddiqui,alice@meta.com,Engineer
+Bob,Meta,Meta,John Meta,bob@meta.com,Manager
+Charlie,Google,Google,Afraz Siddiqui,charlie@google.com,Analyst
+Diana,Google,Google,Afraz Siddiqui,diana@google.com,Developer
+Eve,Google,Google,Charlie Google,eve@google.com,Engineer
+Faisal,Amazon,Amazon,Afraz Siddiqui,faisal@amazon.com,Consultant
+Gina,Amazon,Amazon,Faisal Amazon,gina@amazon.com,Manager
+Haris,Amazon,Amazon,Afraz Siddiqui,haris@amazon.com,Developer

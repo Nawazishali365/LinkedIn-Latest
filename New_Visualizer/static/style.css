@@ -1,0 +1,244 @@
+/* ===== Global ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #333;
+  overflow: auto;
+}
+
+/* ===== Upload Page ===== */
+.upload-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+.upload-container h2 {
+  font-size: 22px;
+  color: #333;
+}
+.HCC_LOGO {
+  height: 40%;
+  width: 40%;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="file"] {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #fafafa;
+}
+
+/* ===== Buttons ===== */
+button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ===== Canvas Container ===== */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  margin-top: 60px;
+}
+
+canvas#graphCanvas {
+  display: block;
+  position: relative;
+  background: #ffffff;
+  min-width: 2000px;
+  min-height: 1200px;
+}
+
+/* ===== Graph Page Top Bar Fix ===== */
+body.graph-page {
+  overflow: auto;
+}
+
+/* ===== Top Bar ===== */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1002;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Left side controls */
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Right side controls */
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Label style */
+.left-controls label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Filter dropdown */
+#companyFilter {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+/* File input */
+#csvUpload {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: white;
+}
+
+/* Submit button */
+#uploadBtn {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#uploadBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Back link */
+#back-link {
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#back-link:hover {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+/* ===== Legend ===== */
+#legend {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  max-height: 80vh;
+  overflow-y: auto;
+  max-width: 180px;
+}
+
+#legend h4 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* ===== Tooltip ===== */
+.tooltip {
+  font-size: 13px;
+  pointer-events: none;
+  background: #fff;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+  z-index: 1002;
+}
+
+/* ===== Zoom Controls ===== */
+#zoom-controls {
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#zoom-controls button {
+  margin: 3px;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* ===== Zoom Instruction ===== */
+#zoom-instruction {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  z-index: 1001;
+}
+
