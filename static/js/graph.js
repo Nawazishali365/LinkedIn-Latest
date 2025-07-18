@@ -29,10 +29,13 @@ fetch("/data")
       n.group.trim()
     );
 
+    const fullGroupCounts = new Map(); // <- store full counts for legend
+
     const originalNodes = [];
     for (const [group, nodes] of groupedByCompany) {
+      fullGroupCounts.set(group, nodes.length); // save total count for legend
+
       if (group === "You") {
-        // Always include "You"
         originalNodes.push(
           ...nodes.map((n) => ({
             id: n.id.trim(),
@@ -41,9 +44,9 @@ fetch("/data")
           }))
         );
       } else {
-        const trimmedNodes = nodes.slice(0, 100); // Limit to 100 for visual
+        const limited = nodes.slice(0, 100);
         originalNodes.push(
-          ...trimmedNodes.map((n) => ({
+          ...limited.map((n) => ({
             id: n.id.trim(),
             group: group,
             position: n.position || "",
@@ -59,13 +62,13 @@ fetch("/data")
       const target = typeof l.target === "object" ? l.target.id : l.target;
       return allNodeIds.has(source) && allNodeIds.has(target);
     });
-    const groupCountsMap = d3.rollup(
-      originalNodes.filter((n) => n.group !== "You"),
-      (v) => v.length,
-      (d) => d.group
-    );
+    // const groupCountsMap = d3.rollup(
+    //   originalNodes.filter((n) => n.group !== "You"),
+    //   (v) => v.length,
+    //   (d) => d.group
+    // );
 
-    const groupCounts = Array.from(groupCountsMap.entries());
+    const groupCounts = Array.from(fullGroupCounts.entries());
     groupCounts.sort((a, b) => b[1] - a[1]);
     const groups = groupCounts.map(([group]) => group);
 
@@ -148,17 +151,6 @@ fetch("/data")
         draggedNode.fy = draggedNode.y;
         simulation.alphaTarget(0.3).restart();
         debugger;
-        simulation
-          .force("center", d3.forceCenter(width / 2, height / 2))
-          .force("charge", d3.forceManyBody().strength(-80))
-          .force(
-            "link",
-            d3
-              .forceLink(links)
-              .id((d) => d.id)
-              .distance(100)
-          )
-          .force("collide", d3.forceCollide(30));
       }
     });
 
@@ -351,7 +343,8 @@ fetch("/data")
         .style("margin-right", "6px")
         .style("border-radius", "2px");
 
-      item.append("span").text(`${group} (${count})`);
+      const fullCount = fullGroupCounts.get(group) || count;
+      item.append("span").text(`${group} (${fullCount})`);
     });
 
     legendContainer
