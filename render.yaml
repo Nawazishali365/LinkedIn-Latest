@@ -2,7 +2,7 @@ services:
   - type: web
     name: linkedin-network-graph
     env: python
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r New_visualizer/requirements.txt"
     startCommand: "python app.py"
     envVars:
       - key: FLASK_ENV
