@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 import csv
 import os
+import uuid
 from collections import defaultdict
 from werkzeug.utils import secure_filename
 
@@ -24,7 +25,7 @@ def index():
         file = request.files.get('file')
         if file and allowed_file(file.filename):
             try:
-                filename = secure_filename(file.filename)
+                filename =f'{uuid.uuid4()}.csv'  # Generate a unique filename
                 filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 file.save(filepath)
                 
